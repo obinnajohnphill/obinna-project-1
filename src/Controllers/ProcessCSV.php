@@ -12,7 +12,7 @@ class ProcessCSV
 
         $value = (array_values($get));
         $filename = $value[0];
-        $combination_Count = $value[0];
+        $combination_count = $value[1];
         $delimiter=',';
 
         if (file_exists($filename)) {
@@ -22,22 +22,25 @@ class ProcessCSV
 
             $header = NULL;
             $data = array();
+            $sent = array();
             if (($handle = fopen($filename, 'r')) !== FALSE)
             {
                 while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
                 {
-                    if(!$header)
+                    if(!$header){
                         $header = $row;
-                    else
+                    }else{
                         $data[] = array_combine($header, $row);
+                    }
+
                 }
                 fclose($handle);
             }
-
-
-            return $data;
-
-
+           ##First we convert the array to a json string
+           $json = json_encode($data);
+           ## Then we convert the json string to a stdClass()
+           $object = json_decode($json);
+           return $object;
         } else {
             echo "The file $filename does not exist";
         }
