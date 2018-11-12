@@ -8,12 +8,17 @@
 
 
 
-
 include_once("src/Controllers/ProcessCSV.php");
 
+## Pass commandline arguements
 parse_str(implode('&', array_slice($argv, 1)), $_GET);
 
+## Call process csv class
 $dump = new ProcessCSV();
 $data = $dump->readCSV($_GET);
 
-print_r($data);
+## convert retruned array into object
+$object = json_decode(json_encode($data), FALSE);
+
+## print product object
+print_r($object);
