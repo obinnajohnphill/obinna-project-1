@@ -25,6 +25,9 @@ class DumpData{
     function dumpData($data){
     ## Dump the processed content of the csv file onto the terminal
     foreach ($data as $fields){
+        if(empty($fields['brand_name']) or empty($fields['model_name'])){
+            throw new Exception("Required field is not set");
+        }
         echo "\n";
         echo "make: ".$fields['brand_name']."(string, required)"."- Brand name"."\n";
         echo "model: ".$fields['model_name']."(string, required)"."- Model name"."\n";
