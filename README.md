@@ -5,12 +5,11 @@
 
 2. Run parser.php --file=products_comma_separated.csv --unique-combinations={filename}
 
-(i.e --unique-combinations=combination_count.csv)
+    (i.e --unique-combinations=combination_count.csv)
 
-3. Wait for script to complete the listing of all the products on terminal, until you see below command
+3. Wait for script to complete the listing of all the products on terminal, until you see below prompt
 
---------------------------------------
-Enter: Ctrl+C (to complete the process)
+    Enter: Ctrl+C (to complete the process)
 
 4. Interrupt (kill) the current foreground process running on the terminal
 
